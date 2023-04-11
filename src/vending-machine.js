@@ -1,7 +1,5 @@
+const generateNoOfCoins = function(amount,dinomination ) {
+  return amount / dinomination;
+}
 
-const one = 1
-const two = 2
-
-exports.one = one;
-exports.two = two;
-
+exports.generateNoOfCoins = generateNoOfCoins;
