@@ -1,5 +1,4 @@
 
-const denominations = [ 10, 5, 2, 1 ];
 
 const optimumNoOfCoins = {};
 
@@ -13,10 +12,12 @@ const addAll = function (obj) {
   return sum;
 }
 
-const generateNoOfCoins = function(amount) {
+
+const generateNoOfCoins = function(amount, denominationsInAsc) {
+  const denominationsInDesc = denominationsInAsc.slice().reverse(); 
   let remainingAmount = amount;
 
-  for (let denomination of denominations) {
+  for (let denomination of denominationsInDesc) {
     optimumNoOfCoins[denomination] =  Math.floor(remainingAmount / denomination);
     remainingAmount = remainingAmount % denomination;
   }
