@@ -17,6 +17,7 @@ const testGenerateCoins = function() {
   testing.assertEquals(vendingMachine.dispenseCoins(10, [ 1, 2, 5, 10]), 1, "For amount 10 no Of coins should be 2");
   testing.assertEquals(vendingMachine.dispenseCoins(9, [ 1, 2, 5, 10]), 3, "For amount 9 no Of coins should be 3");
   testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 2, 5, 10]), 3, "For amount 9 no Of coins should be 3");
+  testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 4, 7 ]), 4, "For amount 9 no Of coins should be 3");
 }
 
 testGenerateCoins();
