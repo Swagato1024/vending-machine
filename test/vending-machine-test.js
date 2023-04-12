@@ -1,6 +1,6 @@
 const testing = require('../lib/testing.js');
 const vendingMachine = require('../src/vending-machine.js');
-const algorithm = require('../src/maxSort.js');
+const sort = require('../src/minSort.js');
 
 const print = function (text) {
   console.log(testing.yellow((testing.underline(text))));
@@ -15,32 +15,22 @@ const testGenerateCoins = function() {
   testing.assertEquals(vendingMachine.dispenseCoins(2, [ 1, 2]), 1, "For amount 2 no Of coins should be 1");
   testing.assertEquals(vendingMachine.dispenseCoins(4, [ 1, 2, 5]), 2, "For amount 4 no Of coins should be 2");
   testing.assertEquals(vendingMachine.dispenseCoins(5, [ 1, 2, 5]), 1, "For amount 5 no Of coins should be 1");
-  // testing.assertEquals(vendingMachine.dispenseCoins(10, [ 1, 2, 5, 10]), 1, "For amount 10 no Of coins should be 1");
-  //testing.assertEquals(vendingMachine.dispenseCoins(9, [ 1, 2, 5, 10]), 3, "For amount 9 no Of coins should be 3");
-  // testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 2, 5, 10]), 3, "For amount 13 no Of coins should be 3");
-  testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 4, 7 ]), 4, "For amount 13 no Of coins should be 3");
-  testing.assertEquals(vendingMachine.dispenseCoins(13, [ 7, 1, 4 ]), 4, "For amount 13 no Of coins should be 3");
+  testing.assertEquals(vendingMachine.dispenseCoins(10, [ 1, 2, 5, 10]), 1, "For amount 10 and ordered denominations, no Of coins should be 1");
+  testing.assertEquals(vendingMachine.dispenseCoins(9, [ 1, 2, 5, 10]), 3, "For amount 9 and ordered denominations no Of coins should be 3");
+  testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 2, 5, 10]), 3, "For amount 13 and ordered denominations no Of coins should be 3");
+  testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 4, 7 ]), 4, "For amount 13 and ordered denominations no Of coins should be 4");
+  testing.assertEquals(vendingMachine.dispenseCoins(13, [ 1, 7, 4 ]), 4, "For amount 13 and unordered denominations no Of coins should be 4");
 }
 
 testGenerateCoins();
 
-const testMaxSort = function () {
-  print("testing for max Sort");
+const testMinSort = function () {
+  print("testing for min Sort");
 
-  testing.assertArraysEqual(algorithm.maxSort([3]),[3], "Sorting of one element is the number itself");
-  // testing.assertArraysEqual(algorithm.maxSort([4, 3]),[3, 4], "Sorting of two elements");
-  //testing.assertArraysEqual(algorithm.maxSort([7, 1, 4]),[1, 4, 7], "Sorting more than two elements");
+  testing.assertArraysEqual(sort.minSort([3]), [3], "Sorting of one element is the number itself");
+  testing.assertArraysEqual(sort.minSort([4, 3]),[3, 4], "Sorting of two elements");
+  testing.assertArraysEqual(sort.minSort([1, 7, 4]),[1, 4, 7], "Sorting more than two elements");
 }
 
-testMaxSort();
+testMinSort();
 
-const testMaxOf = function () {
-  print("testing for maxOf numbers");
-
-  testing.assertEquals(algorithm.maxOf([ 2 ]), 2, "Max of one element is the number itself" );
-  testing.assertEquals(algorithm.maxOf([ 2, 4 ]), 4, "Max of two elements" );
-  testing.assertEquals(algorithm.maxOf([ 2, 4, 6, 3 ]), 6, "Max of more than two elements" );
-}
-
-
-testMaxOf();
