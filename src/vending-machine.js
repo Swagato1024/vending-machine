@@ -14,11 +14,13 @@ const calculateNoOfCoins = function (amount, denomination) {
   return Math.floor(amount / denomination); 
 }
 
-const dispenseCoins = function(amount, denominationsInAsc) {
+const dispenseCoins = function(amount, denominations) {
   const optimumNoOfCoins = {};
 
-  const denominationsInDesc = denominationsInAsc.slice().reverse(); 
+  const denominationsInDesc = denominations.slice().sort().reverse(); 
   let remainingAmount = amount;
+
+  console.log(denominationsInDesc);
 
   for (let denomination of denominationsInDesc) {
     optimumNoOfCoins[denomination] = calculateNoOfCoins(remainingAmount, denomination); 
