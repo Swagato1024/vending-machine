@@ -1,8 +1,6 @@
 
 
-const optimumNoOfCoins = {};
-
-const addAll = function (obj) {
+const addAllValues = function (obj) {
   let sum = 0;
 
   for (let key in obj) {
@@ -12,17 +10,22 @@ const addAll = function (obj) {
   return sum;
 }
 
+const calculateNoOfCoins = function (amount, denomination) {
+  return Math.floor(amount / denomination); 
+}
 
-const generateNoOfCoins = function(amount, denominationsInAsc) {
+const dispenseCoins = function(amount, denominationsInAsc) {
+  const optimumNoOfCoins = {};
+
   const denominationsInDesc = denominationsInAsc.slice().reverse(); 
   let remainingAmount = amount;
 
   for (let denomination of denominationsInDesc) {
-    optimumNoOfCoins[denomination] =  Math.floor(remainingAmount / denomination);
+    optimumNoOfCoins[denomination] = calculateNoOfCoins(remainingAmount, denomination); 
     remainingAmount = remainingAmount % denomination;
   }
 
-  return addAll(optimumNoOfCoins);
+  return addAllValues(optimumNoOfCoins);
 }
 
-exports.generateNoOfCoins = generateNoOfCoins;
+exports.dispenseCoins = dispenseCoins;
