@@ -1,6 +1,6 @@
 const testing = require('../lib/testing.js');
 const vendingMachine = require('../src/vending-machine.js');
-const sort = require('../src/bubble-sort.js');
+const sort = require('../lib/sort/bubble-sort.js');
 
 const assertEquals = testing.assertEquals;
 const assertArraysEqual = testing.assertArraysEqual;
