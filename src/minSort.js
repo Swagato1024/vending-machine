@@ -1,10 +1,6 @@
 const utility = require('../lib/utilities.js');
 
-const swap = function (index1, index2, list) {
-  const element = list[index1];
-  list[index1] = list[index2];
-  list[index2] = element;
-}
+
 const minSort = function(list) {
   const arranged = list.slice();
 
