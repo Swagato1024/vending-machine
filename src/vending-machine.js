@@ -1,27 +1,32 @@
-const sort = require('./minSort.js');
+const sort = require('./bubble-sort.js');
 
-const addAllValues = function (obj) {
-  let sum = 0;
-
-  for (let key in obj) {
-    sum += obj[key];    
-  }
-
-  return sum;
-}
 
 const calculateNoOfCoins = function (amount, denomination) {
   return Math.floor(amount / denomination); 
 }
 
 const arrangeInDescOrder = function(list) {
-  return sort.minSort(list).reverse();
+  return sort.bubbleSort(list).reverse();
 }
 
 const dispenseCoins = function(amount, denominations) {
-  const optimumNoOfCoins = {};
+  let coinCounts = 0;
+  const denominationsInDesc = arrangeInDescOrder(denominations.slice()); 
+  let remainingAmount = amount;
 
-  const denominationsInDesc = arrangeInDescOrder(denominations); 
+  for (let denomination of denominationsInDesc) {
+    coinCounts += calculateNoOfCoins(remainingAmount, denomination); 
+    remainingAmount = remainingAmount % denomination;
+  }
+
+  return coinCounts; 
+}
+
+
+const calculateEachCoinCounts = function (amount, denominations) {
+
+  const optimumNoOfCoins = {};
+  const denominationsInDesc = arrangeInDescOrder(denominations.slice()); 
   let remainingAmount = amount;
 
   for (let denomination of denominationsInDesc) {
@@ -29,7 +34,9 @@ const dispenseCoins = function(amount, denominations) {
     remainingAmount = remainingAmount % denomination;
   }
 
-  return addAllValues(optimumNoOfCoins);
-}
+  return optimumNoOfCoins;
+} 
+
 
 exports.dispenseCoins = dispenseCoins;
+exports.calculateCoinCounts = calculateEachCoinCounts;
