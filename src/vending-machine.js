@@ -27,12 +27,9 @@ const calculateEachCoinCounts = function (amount, denominations) {
   return optimumNoOfCoins;
 } 
 
-const dispenseCoins = function(amount, denominations) {
+const countTotalCoins = function(amount, denominations) {
   return addAll(calculateEachCoinCounts (amount, denominations));
 }
 
-
-
-
-exports.dispenseCoins = dispenseCoins;
+exports.countTotalCoins = countTotalCoins;
 exports.calculateCoinCounts = calculateEachCoinCounts;
