@@ -4,12 +4,7 @@ const utilities = require('../lib/utilities.js');
 const assertEquals = testing.assertEquals;
 const sumOf = utilities.sumOf;
 const addAll = utilities.addAll;
-
-const print = function (text) {
-  console.log(testing.yellow((testing.underline(text))));
-}
-
-console.log('hello');
+const print = testing.print;
 
 const testSumOf = function () {
   print('test for sumOf elements');
