@@ -1,6 +1,6 @@
 const testing = require('../lib/testing.js');
 const vendingMachine = require('../src/vending-machine.js');
-const sort = require('../src/minSort.js');
+const sort = require('../src/bubble-sort.js');
 
 const print = function (text) {
   console.log(testing.yellow((testing.underline(text))));
@@ -27,9 +27,9 @@ testGenerateCoins();
 const testMinSort = function () {
   print("testing for min Sort");
 
-  testing.assertArraysEqual(sort.minSort([3]), [3], "Sorting of one element is the number itself");
-  testing.assertArraysEqual(sort.minSort([4, 3]),[3, 4], "Sorting of two elements");
-  testing.assertArraysEqual(sort.minSort([1, 7, 4]),[1, 4, 7], "Sorting more than two elements");
+  testing.assertArraysEqual(sort.bubbleSort([3]), [3], "Sorting of one element is the number itself");
+  testing.assertArraysEqual(sort.bubbleSort([4, 3]),[3, 4], "Sorting of two elements");
+  testing.assertArraysEqual(sort.bubbleSort([1, 7, 4]),[1, 4, 7], "Sorting more than two elements");
 }
 
 testMinSort();
